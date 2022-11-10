@@ -18,6 +18,8 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <cucumber.version>7.2.3</cucumber.version>
     <junit.version>4.11</junit.version>
+    <webdriver-manager.version>5.1.0</webdriver-manager.version>
+    <selenium-java.version>4.1.2</selenium-java.version>
   </properties>
 
   <dependencies>
@@ -47,6 +49,20 @@
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
       <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium-java.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>${webdriver-manager.version}</version>
       <scope>test</scope>
     </dependency>
 

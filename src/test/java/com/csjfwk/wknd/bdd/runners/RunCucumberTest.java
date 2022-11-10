@@ -7,10 +7,10 @@ import org.junit.runner.RunWith;;
 @RunWith(Cucumber.class)
 
 @CucumberOptions(
-    plugin = { "pretty",
-               "html:target/cucumber-reports/index.html",
-               "json:target/cucumber-reports/cucumber.json"
-               //"com.aventstack.extentreports.cucumber.adapter.ExtenCucumberAdapter:"
+    plugin = { "pretty", //applies color to cucmumber report
+               "html:target/cucumber-reports/index.html", //generate HTML report
+               "json:target/cucumber-reports/cucumber.json" // generate JSON report
+               //"com.aventstack.extentreports.cucumber.adapter.ExtenCucumberAdapter:" //generates Extent Reports
     },
     features = {"classpath:features"},
     glue = {"com.csjfwk.wknd.bdd.stepDefinitions"}
