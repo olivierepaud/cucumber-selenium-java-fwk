@@ -13,9 +13,10 @@ import org.junit.runner.RunWith;;
                //"com.aventstack.extentreports.cucumber.adapter.ExtenCucumberAdapter:" //generates Extent Reports
     },
     features = {"classpath:features"},
-    glue = {"com.csjfwk.wknd.bdd.stepDefinitions"}
+    glue = {"com.csjfwk.wknd.bdd.stepDefinitions"},
     //tags = {"@test"}
-)
+    tags = "@test"
+    )
 
 public class RunCucumberTest {
     
