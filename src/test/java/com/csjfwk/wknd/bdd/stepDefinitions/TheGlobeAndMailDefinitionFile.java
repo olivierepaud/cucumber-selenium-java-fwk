@@ -1,6 +1,6 @@
 package com.csjfwk.wknd.bdd.stepDefinitions;
 
-import com.csjfwk.wknd.pageObjects.WebSiteHomepagePageObject;
+import com.csjfwk.wknd.pageObjects.TheGlobeAndMailHomepagePageObject;
 import com.csjfwk.wknd.utils.TestContextSetup;
 
 import io.cucumber.java.en.Given;
@@ -10,7 +10,7 @@ import io.cucumber.java.en.When;
 public class TheGlobeAndMailDefinitionFile {
 
     private TestContextSetup testContextSetup;
-    private WebSiteHomepagePageObject homepagePO;
+    private TheGlobeAndMailHomepagePageObject homepagePO;
 
     // doesn't compile if there is no constructor with zero argument
     // which one is used?
@@ -83,6 +83,8 @@ public class TheGlobeAndMailDefinitionFile {
     @Then("I am able to click on the Register button to open the register pop-up")
     public void i_am_able_to_click_on_the_register_button_to_open_the_register_pop_up() throws InterruptedException {
         homepagePO.clickOnRegisterButton();
+        //wait for the pop-up to open
+        Thread.sleep(2000);
         //switch to the iframe that corresponds to the register pop-up to fill it in
         //source: https://www.tutorialspoint.com/how-to-switch-back-from-a-frame-to-default-in-selenium-webdriver
         testContextSetup.webDriver.switchTo().frame("register-modal-iframe");

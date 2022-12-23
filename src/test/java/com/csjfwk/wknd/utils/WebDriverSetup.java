@@ -10,7 +10,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class WebDriverSetup {
 
-    public WebDriver webDriver = null;
+    public static WebDriver webDriver = null;
     public WebDriverManager webDriverManager;
 
     public WebDriver WebDriverManager() {

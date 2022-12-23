@@ -13,9 +13,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.csjfwk.wknd.utils.FileUtils;
+import com.csjfwk.wknd.utils.SeleniumUtils;
 
 
-public class WebSiteHomepagePageObject {
+public class TheGlobeAndMailHomepagePageObject {
     
     private WebDriver webDriver;
     private Properties properties;
@@ -39,7 +40,7 @@ public class WebSiteHomepagePageObject {
     private By close_register_popup_xpath = By.xpath("//button[@id='register-modal-close']");
 
 
-    public WebSiteHomepagePageObject(WebDriver driver) {
+    public TheGlobeAndMailHomepagePageObject(WebDriver driver) {
         System.out.println("***/!\\*** 6. in WebSiteHomepagePageObject(WebDriver) constructor (from step def file)");
         System.out.println("***/!\\***    we instanciate the webDriver in the class");
         this.webDriver = driver;
@@ -51,8 +52,9 @@ public class WebSiteHomepagePageObject {
         String methodeName = "verifyHomePageTitle()";
         try {
             WebElement webElement = webDriver.findElement(site_title_xpath);
+            SeleniumUtils.highLightElement(webElement);
             String actualTitle = webElement.getText();
-            String expectedSiteTitle = properties.getProperty("site-title");    
+            String expectedSiteTitle = properties.getProperty("site-title");
             Assert.assertEquals(expectedSiteTitle, actualTitle);
         } catch (NoSuchElementException e) {
             System.out.println("***/!\\*** Exception in "+methodeName);
@@ -65,11 +67,14 @@ public class WebSiteHomepagePageObject {
         String methodeName = "verifyRegisterButton()";
         try {
             WebElement webElement = webDriver.findElement(register_button_xpath);
-            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            SeleniumUtils.highLightElement(webElement);
+            SeleniumUtils.waitforElementTobeClickable(webElement);
+            // previous method
+            // wait.until(ExpectedConditions.elementToBeClickable(webElement));
             System.out.println("***/!\\*** ALL GOOD in "+methodeName);
             Assert.assertTrue(true);
         } catch (NoSuchElementException e) {
-            System.out.println("***/!\\*** Exception in verifyRegisterButton()");
+            System.out.println("***/!\\*** Exception in "+methodeName);
             e.printStackTrace();
             Assert.assertTrue(false);
         }
@@ -79,12 +84,13 @@ public class WebSiteHomepagePageObject {
         String methodeName = "clickOnRegisterButton()";
         try {
             WebElement webElement = webDriver.findElement(register_button_xpath);
-            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            SeleniumUtils.highLightElement(webElement);
+            SeleniumUtils.waitforElementTobeClickable(webElement);
             webElement.click();
             System.out.println("***/!\\*** ALL GOOD in "+methodeName);
             Assert.assertTrue(true);
         } catch (NoSuchElementException e) {
-            System.out.println("***/!\\*** Exception in clickOnRegisterButton()");
+            System.out.println("***/!\\*** Exception in "+methodeName);
             e.printStackTrace();
             Assert.assertTrue(false);
         }
@@ -94,11 +100,12 @@ public class WebSiteHomepagePageObject {
         String methodeName = "verifySearchButton()";
         try {
             WebElement webElement = webDriver.findElement(search_button_xpath);
-            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            SeleniumUtils.highLightElement(webElement);
+            SeleniumUtils.waitforElementTobeClickable(webElement);
             System.out.println("***/!\\*** ALL GOOD in "+methodeName);
             Assert.assertTrue(true);
         } catch (NoSuchElementException e) {
-            System.out.println("***/!\\*** Exception in verifySearchButton()");
+            System.out.println("***/!\\*** Exception in "+methodeName);
             e.printStackTrace();
             Assert.assertTrue(false);
         }
@@ -112,13 +119,19 @@ public class WebSiteHomepagePageObject {
             String email = properties.getProperty("email");
             String password = properties.getProperty("password");
             String postalCode = properties.getProperty("postal-code");
-            webDriver.findElement(input_email_xpath).sendKeys(email);
-            webDriver.findElement(input_password_xpath).sendKeys(password);
-            webDriver.findElement(input_postalcode_xpath).sendKeys(postalCode);
+            WebElement webElement_email = webDriver.findElement(input_email_xpath);
+            SeleniumUtils.highLightElement(webElement_email);
+            webElement_email.sendKeys(email);
+            WebElement webElement_password = webDriver.findElement(input_password_xpath);
+            SeleniumUtils.highLightElement(webElement_password);
+            webElement_password.sendKeys(password);
+            WebElement webElement_postalCode = webDriver.findElement(input_postalcode_xpath);
+            SeleniumUtils.highLightElement(webElement_postalCode);
+            webElement_postalCode.sendKeys(postalCode);
             System.out.println("***/!\\*** ALL GOOD in "+methodeName);
             Assert.assertTrue(true);
         } catch (NoSuchElementException e) {
-            System.out.println("***/!\\*** Exception in fillTheRegistrationForm()");
+            System.out.println("***/!\\*** Exception in "+methodeName);
             e.printStackTrace();
             Assert.assertTrue(false);
         }
@@ -128,11 +141,12 @@ public class WebSiteHomepagePageObject {
         String methodeName = "verifyCreateAccountButton()";
         try {
             WebElement webElement = webDriver.findElement(create_account_button_xpath);
-            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            SeleniumUtils.waitforElementTobeClickable(webElement);
+            SeleniumUtils.highLightElement(webElement);
             System.out.println("***/!\\*** ALL GOOD in "+methodeName);
             Assert.assertTrue(true);
         } catch (NoSuchElementException e) {
-            System.out.println("***/!\\*** Exception in verifyCreateAccountButton()");
+            System.out.println("***/!\\*** Exception in "+methodeName);
             e.printStackTrace();
             Assert.assertTrue(false);
         }
@@ -142,30 +156,17 @@ public class WebSiteHomepagePageObject {
         String methodeName = "closeRegisterPopup()";
         try {
             WebElement webElement = webDriver.findElement(close_register_popup_xpath);
-            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+            SeleniumUtils.waitforElementTobeClickable(webElement);
+            SeleniumUtils.highLightElement(webElement);
             webElement.click();
             System.out.println("***/!\\*** ALL GOOD in "+methodeName);
             Assert.assertTrue(true);
         } catch (NoSuchElementException e) {
-            System.out.println("***/!\\*** Exception in closeRegisterPopup()");
+            System.out.println("***/!\\*** Exception in "+methodeName);
             e.printStackTrace();
             Assert.assertTrue(false);
         }
+        
     }
 
-
-
-/*
-    private void waitElementToClick(WebElement element) {
-        try {
-            FluentWait<WebDriver> fwait = new FluentWait<WebDriver>(webDriver);
-            fwait.pollingEvery(Duration.ofMillis(150));
-            fwait.withTimeout(Duration.ofSeconds(8));
-            wait.until(ExpectedConditions.elementToBeClickable(element));
-        } catch (Exception e) {
-            System.out.println("***\/!\\*** waitElementToClick(): unable to find Element");
-            e.printStackTrace();
-        }
-    }
-    */
 }
