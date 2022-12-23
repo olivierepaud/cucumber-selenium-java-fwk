@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;;
     features = {"classpath:features"},
     glue = {"com.csjfwk.wknd.bdd.stepDefinitions"},
     //tags = {"@test"}
-    tags = "@test"
+    tags = "@runthis"
     )
 
 public class RunCucumberTest {

@@ -13,6 +13,8 @@ public class PageObjectsManager {
         webDriver = driver;
     }
 
+    // TODO : pourquoi ne pas tester d'abord la valeur à null du paramètre ?
+    // plutôt que de faire un new a chaque appel de cette méthode, ne peut-on pas utiliser toujours la même instance ?
     public WebSiteHomepagePageObject getHomePagePO() {
         homepagePO = new WebSiteHomepagePageObject(webDriver);
         return homepagePO;
