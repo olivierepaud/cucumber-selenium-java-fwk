@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;;
     glue = {"com.csjfwk.wknd.bdd.stepDefinitions"},
     //tags = {"@test"}
     tags = "@theglobeandmail"
+    //tags = "@runthis"
     )
 
 public class RunCucumberTest {

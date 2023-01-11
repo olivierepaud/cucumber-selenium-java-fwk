@@ -1,6 +1,10 @@
 package com.csjfwk.wknd.pageObjects;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 
 import org.junit.Assert;
@@ -12,6 +16,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.csjfwk.wknd.utils.DataConstants;
 import com.csjfwk.wknd.utils.FileUtils;
 import com.csjfwk.wknd.utils.SeleniumUtils;
 
@@ -38,6 +43,8 @@ public class TheGlobeAndMailHomepagePageObject {
     private By create_account_button_xpath = By.xpath("//button[@aria-label='Create My Free Account']");
     //xpath of the cross to close the register pop-up
     private By close_register_popup_xpath = By.xpath("//button[@id='register-modal-close']");
+    //xpath of the top menu elements
+    private By top_menu_elements_xpath = By.xpath("//a[@class='c-scroll-menu__link']");
 
 
     public TheGlobeAndMailHomepagePageObject(WebDriver driver) {
@@ -166,7 +173,38 @@ public class TheGlobeAndMailHomepagePageObject {
             e.printStackTrace();
             Assert.assertTrue(false);
         }
-        
+
     }
 
+    public void verifyTopMenuContents() throws InterruptedException {
+        String methodeName = "verifyTopMenuContent()";
+        try {
+            List <WebElement> topMenuElements = webDriver.findElements(top_menu_elements_xpath);
+            List<String> topMenuElementsStr = new ArrayList<String>();
+            //Collections.sort(topMenuElements);
+            for (int i=0; i<topMenuElements.size(); i++) {
+                SeleniumUtils.highLightElement(topMenuElements.get(i));
+                String text = topMenuElements.get(i).getText();
+                topMenuElementsStr.add(text);
+                //System.out.println("***/!\\*** topMenuElements["+i+"]: "+text);
+            }
+            List <String> topMenuExpectedElements = DataConstants.topMenuExpectedContents;
+            //Collections.sort(topMenuExpectedElements);
+            for (int i=0; i<topMenuExpectedElements.size(); i++) {
+                String text = topMenuExpectedElements.get(i);
+                //System.out.println("***/!\\*** topMenuExpectedElements["+i+"]: "+text);
+            }
+            Assert.assertEquals(topMenuExpectedElements, topMenuElementsStr);
+            if (topMenuExpectedElements.equals(topMenuElementsStr)) {
+                System.out.println("***/!\\*** ALL GOOD in "+methodeName);
+            } else {
+                System.out.println("***/!\\*** ISSUE in "+methodeName);
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("***/!\\*** Exception in "+methodeName);
+            e.printStackTrace();
+            Assert.assertTrue(false);
+        }
+        
+    }
 }

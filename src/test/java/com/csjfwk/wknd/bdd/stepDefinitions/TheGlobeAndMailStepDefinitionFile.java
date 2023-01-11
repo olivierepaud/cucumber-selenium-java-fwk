@@ -7,7 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class TheGlobeAndMailDefinitionFile {
+public class TheGlobeAndMailStepDefinitionFile {
 
     private TestContextSetup testContextSetup;
     private TheGlobeAndMailHomepagePageObject homepagePO;
@@ -18,8 +18,8 @@ public class TheGlobeAndMailDefinitionFile {
     //    System.out.println("***/!\\*** in BasicStepDefinitionFile() constructor with zero argument");
     // }
 
-    public TheGlobeAndMailDefinitionFile(TestContextSetup contextSetup) {
-        System.out.println("***/!\\*** 5. in BasicStepDefinitionFile(TestContextSetup) constructor (auto call)");
+    public TheGlobeAndMailStepDefinitionFile(TestContextSetup contextSetup) {
+        System.out.println("***/!\\*** 5. in TheGlobeAndMailDefinitionFile(TestContextSetup) constructor (auto call)");
         System.out.println("***/!\\***    we instanciate the TestContextSetup and the page objects in the class");
         this.testContextSetup = contextSetup;
         this.homepagePO = contextSetup.pageObjectsManager.getHomePagePO();
@@ -50,6 +50,11 @@ public class TheGlobeAndMailDefinitionFile {
         homepagePO.verifyHomePageTitle();
     }
 
+    @Then("that the content of the top menu is correct")
+    public void that_the_content_of_the_top_menu_is_correct() throws InterruptedException {
+        homepagePO.verifyTopMenuContents();
+    }
+    
     @Then("that there is a button to register that is clickable")
     public void that_there_is_a_button_to_register_that_is_clickable() throws InterruptedException {
         homepagePO.verifyRegisterButton();

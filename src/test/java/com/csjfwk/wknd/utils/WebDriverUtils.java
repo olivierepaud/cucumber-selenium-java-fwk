@@ -10,7 +10,7 @@ public class WebDriverUtils {
     public WebDriver webDriver;
 
     public WebDriverUtils(WebDriver driver) {
-        System.out.println("***/!\\*** 4. in WebDriverUtils(WebDriver) constructor (from TestContextSetup)");
+        System.out.println("***/!\\*** 3. in WebDriverUtils(WebDriver) constructor (from TestContextSetup)");
         webDriver = driver;
     }
 

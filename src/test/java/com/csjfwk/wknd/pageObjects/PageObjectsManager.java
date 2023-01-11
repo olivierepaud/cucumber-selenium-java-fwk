@@ -8,7 +8,7 @@ public class PageObjectsManager {
     public TheGlobeAndMailHomepagePageObject homepagePO;
 
     public PageObjectsManager(WebDriver driver) {
-        System.out.println("***/!\\*** 3. in PageObjectsManager(WebDriver) constructor (from TestContextSetup)");
+        System.out.println("***/!\\*** 4. in PageObjectsManager(WebDriver) constructor (from TestContextSetup)");
         System.out.println("***/!\\***    we instanciate the webDriver in the class");
         webDriver = driver;
     }
